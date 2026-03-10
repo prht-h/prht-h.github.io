@@ -565,7 +565,7 @@
      
     </style>
 </head>
-<script src="https://unpkg.com/typed.js@3.0.0/dist/typed.umd.js"></script>
+
 <body>
 
 <header>
@@ -839,24 +839,32 @@ Feel free to reach out if you'd like to collaborate, discuss projects, or just s
 </main>
 
 <!-- SCRIPTING -->
+<script src="https://unpkg.com/typed.js@3.0.0/dist/typed.umd.js"></script>
 <script>
     var typed = new Typed('#element', {
       strings: ['a high school student and', 'an aspiring Computer Scientist from Udaipur, India.'],
       typeSpeed: 50,
     });
-    const sections = document.querySelectorAll("section");
+    const sections = document.querySelectorAll("section:not(.firstSection)");
 
-    const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-    if(entry.isIntersecting){
-    entry.target.classList.add("show");
-    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+        }
     });
+    }, {
+    threshold: 0.1
     });
 
-    sections.forEach(section => {
-    observer.observe(section);
-    });
+sections.forEach(section => {
+  observer.observe(section);
+
+  // if already visible on load
+  if (section.getBoundingClientRect().top < window.innerHeight) {
+    section.classList.add("show");
+  }
+});
 </script>
 </div>
 
