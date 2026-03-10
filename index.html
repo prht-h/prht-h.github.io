@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Himadri Purohit - Student Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" href="favicon-16x16.png">
+<!-- STYLING -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: rgb(231 216 201);
+            color: rgb(47 62 78);
+            font-family: "Inter", sans-serif;
+            padding-top:80px;
+
+        }
+        .container{
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+/*NAVIGATION BAR*/
+        nav{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:20px 80px;
+            height:80px;
+            color:rgb(231 216 201);
+            background-color:rgb(47 62 78);
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            z-index:1000;
+        }
+
+        a{
+            text-decoration: none;
+            color: inherit;
+        }
+
+        nav a{
+            color: rgb(231 216 201);
+            text-decoration: none;
+        }
+        nav a:hover{
+            color: #E6A65D;
+        }
+        nav ul{
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li{
+            list-style: none;
+            margin: 0 23px;
+            cursor:pointer;
+            transition:0.2s;
+        }
+
+        nav ul li:hover{
+            color:#E6A65D;
+        }
+
+        .left{
+            font-size: 1.5rem;
+        }
+
+/*HERO SECTION*/
+        
+        .firstSection{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 60px;
+            margin: 120px auto;
+        }
+        .leftSection{
+            width: 50%;
+            font-size: 2rem;
+        }
+        .leftSection h1{
+            font-family: "Playfair Display", serif;
+            max-width: 520px;
+            font-size: 3.5rem;
+            line-height: 1.15;
+        }
+        .rightSection{
+            width: 40%
+        }
+        .rightSection img{
+            width: 100%;
+            max-width: 540px;
+            border-radius: 14px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+    
+        .gold{
+            color: rgb(67, 96, 109);
+        }
+        #element{
+            font-family: "Playfair Display", serif;
+            max-width: 520px;
+        }
+        
+        .secondSection{
+            margin: 50px auto;
+        }
+
+/*RESUME BUTTON AND GITHUB ICON*/
+
+        .resume-btn{
+            padding:6px 14px;
+            border:1px solid rgb(231 216 201);
+            border-radius:6px;
+            text-decoration:none;
+            color:rgb(231 216 201);
+            font-size:0.9rem;
+            transition:0.2s;
+        }
+
+        .resume-btn:hover{
+            color:#E6A65D;
+        }
+
+        .github-icon{
+            color:rgb(231 216 201);
+            font-size:20px;
+        }
+
+        .github-icon:hover{
+            color:#E6A65D;
+        }
+
+/*STYLING <hr>*/
+
+        main hr{
+            border: 0;
+            background-color: rgb(47 62 78);
+            height: 2px;
+            margin: 20px -10%;
+            width: 120%;
+           
+        }
+
+/*ABOUT SECTION*/
+        .about-text{
+            max-width: 700px;
+            line-height: 1.8;
+            font-size: 18px;
+            margin-top: 20px;
+            color: rgb(60, 75, 90);
+            
+        }
+
+        .secondSection h1{
+            font-size: 2.3rem;
+            margin-bottom: 10px;
+            font-family: "Playfair Display", serif;
+        }
+
+        .about-container{
+            display:flex;
+            align-items:flex-start;
+            gap:80px;
+            margin-top:40px;
+        }
+
+        .about-image{
+            width:40%;
+        }       
+
+        .about-image img{
+            width:100%;
+            max-width:300px;
+            opacity: 0.9;
+        }
+
+        .about-text{
+            width:60%;
+            line-height:1.9;
+            font-size:18px;
+        }
+
+        .about-image img{
+            width:100%;
+            max-width:350px;
+            border-radius:12px;
+            padding-left: 20px;
+        }
+
+/*PROJECTS SECTION*/
+        .projectsSection{
+            margin:90px auto;
+        }
+
+        .projectsSection h1{
+            margin-bottom:40px;
+            font-family: "Playfair Display", serif;
+        }
+
+        .projects-container{
+            display:flex;
+            gap:40px;
+        }
+
+        .project-card{
+            background:rgba(255,255,255,0.2);
+            padding:25px;
+            border-radius:14px;
+            width:50%;
+            transition:0.3s;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .project-card img{
+            width:100%;
+            border-radius:10px;
+            margin-bottom:15px;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card h3{
+            margin-bottom:10px;
+            color: rgb(67, 96, 109)
+        }
+
+        .project-card p{
+            font-size:16px;
+            line-height:1.6;
+        }
+
+        .project-card:hover{
+            transform:translateY(-6px);
+            box-shadow:0 10px 25px rgba(0,0,0,0.1);
+            transform: scale(1.05);
+        }
+
+        .project-links{
+            margin-top:15px;
+        }
+
+        .project-links a{
+            margin-right:15px;
+            text-decoration:none;
+            font-weight:500;
+            color: #E6A65D;
+        }
+
+/*SKILLS SECTION*/
+        .skillsSection{
+            margin:80px auto;
+        }
+
+        .skillsSection h1{
+            font-family: "Playfair Display", serif;
+        }
+
+        .skills-container{
+            display:flex;
+            gap:80px;
+            margin-top:30px;
+        }
+
+        .skill-group h3{
+            margin-bottom:15px;
+            font-weight:600;
+            color: rgb(67, 96, 109);
+
+        }
+
+        .skill-tags{
+            display:flex;
+            flex-wrap:wrap;
+            gap:12px;
+        }
+
+        .skill-tags span{
+            padding:8px 14px;
+            border:1px solid rgb(47 62 78);
+            border-radius:20px;
+            font-size:14px;
+        }
+
+        .skill-tags span:hover{
+            background:rgb(47 62 78);
+            color:white;
+            transition:0.2s;
+        }
+
+/*EDUCATION SECTION*/
+        .educationSection{
+            margin:80px auto;
+        }
+
+        .educationSection h1{
+            font-family: "Playfair Display", serif;
+        }
+
+        .education-container{
+            margin-top:30px;
+            max-width:700px;
+            border-left:2px solid rgb(47 62 78);
+            padding-left:25px;
+        }
+
+        .education-card{
+            padding:25px;
+            border-radius:12px;
+            background:rgba(255,255,255,0.2);
+            margin-bottom:20px;
+        }
+
+        .education-card h3{
+            margin-bottom:8px;
+            color: rgb(67, 96, 109);
+        }
+
+        .school{
+            font-weight:500;
+        }
+
+        .location{
+            font-size:14px;
+            opacity:0.8;
+        }
+
+        .years{
+            font-size:14px;
+            margin-top:4px;
+            margin-bottom:10px;
+            opacity:0.8;
+        }
+
+        .details{
+            line-height:1.6;
+        }
+
+/*ACHIEVEMENTS SECTION*/
+        .achievementsSection{
+            margin:80px auto;
+        }
+
+        .achievementsSection h1{
+            font-family: "Playfair Display", serif;
+        }
+
+        .achievements-container{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:30px;
+            margin-top:30px;
+        }
+
+        .achievement-card{
+            padding:20px;
+            border-radius:12px;
+            background:rgba(255,255,255,0.2);
+            transition:0.3s;
+            cursor: pointer;
+        }
+
+        .achievement-card:hover{
+            transform:translateY(-4px);
+            box-shadow:0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .achievement-card h3{
+            margin-bottom:6px;
+            font-size:18px;
+            color: rgb(67, 96, 109);
+            display: flex;
+            align-items: center;
+        }
+
+        .achievement-card i{
+            margin-right:10px;
+            color:#E6A65D;
+        }
+
+        .achievement-card a{
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .achievement-card a:hover{
+            color: #E6A65D;
+            transform: translateY(-6px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+        }       
+
+
+/*CONTACTS SECTION*/
+        .contactSection{
+            margin:80px auto;
+            text-align:center;
+        }
+
+        .contactSection h1{
+            font-family:"Playfair Display", serif;
+            margin-bottom:15px;
+        }
+
+        .contact-text{
+            max-width:600px;
+            margin:auto;
+            margin-bottom:30px;
+            line-height:1.7;
+        }
+
+        .contact-links{
+            display:flex;
+            justify-content:center;
+            gap:30px;
+            flex-wrap:wrap;
+        }
+
+        .contact-links a{
+            display:flex;
+            align-items:center;
+            gap:10px;
+            padding:10px 18px;
+            border:1px solid rgb(47 62 78);
+            border-radius:25px;
+            transition:0.25s;
+        }
+
+        .contact-links a:hover{
+            background:rgb(47 62 78);
+            color:white;
+        }
+        
+/*ADDITIONAL STYLING*/
+        html{
+            scroll-behavior:smooth;
+        }
+
+        section{
+            scroll-margin-top: 100px;
+            opacity:0;
+            transform: translateY(30px);
+            transition: all 1s ease;
+            padding-top:40px;
+            padding-bottom:20px;
+        }
+
+        section.show{
+            opacity:1;
+            transform: translateY(0);
+        }
+
+        img{
+            max-width:100%;
+            height:auto;
+        }
+
+/*MEDIA QUERY*/
+        @media (max-width: 768px) {
+
+        /* NAVBAR */
+
+        nav{
+            padding:15px 20px;
+            flex-direction:column;
+            align-items:flex-start;
+            height:auto;
+        }
+
+        nav ul{
+            flex-wrap:wrap;
+            margin-top:10px;
+        }
+
+        nav ul li{
+            margin:8px 12px;
+        }
+
+        /* HERO SECTION */
+
+        .firstSection{
+            flex-direction:column;
+            gap:30px;
+            margin:80px auto;
+        }
+
+        .leftSection{
+            width:100%;
+        }
+
+        .rightSection{
+            width:100%;
+            display:flex;
+            justify-content:center;
+        }
+
+        .leftSection h1{
+            font-size:2.4rem;
+        }
+
+        /* ABOUT */
+
+        .about-container{
+            flex-direction:column;
+            gap:30px;
+        }
+
+        .about-image{
+            width:100%;
+            text-align:center;
+        }
+
+        .about-text{
+            width:100%;
+        }
+
+        /* PROJECTS */
+
+        .projects-container{
+            flex-direction:column;
+        }
+
+        .project-card{
+            width:100%;
+        }
+
+        /* SKILLS */
+
+        .skills-container{
+            flex-direction:column;
+            gap:40px;
+        }
+
+        /* ACHIEVEMENTS */
+
+        .achievements-container{
+            grid-template-columns:1fr;
+        }
+
+        /* EDUCATION */
+
+        .education-container{
+            max-width:100%;
+        }
+
+        /* GENERAL */
+
+        .container{
+            width:92%;
+        }
+
+        }
+
+     
+    </style>
+</head>
+<script src="https://unpkg.com/typed.js@3.0.0/dist/typed.umd.js"></script>
+<body>
+
+<header>
+<!-- NAVIGATION BAR -->
+<nav>
+    <div class="left">Himadri Purohit's Portfolio</div>
+    <div class="right">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="Resume_Himadri_Purohit.pdf" class="resume-btn" target="_blank">Resume</a></li>
+            <li><a href="https://github.com/prht-h" target="_blank">
+                <i class="fa-brands fa-github"></i>
+            </a></li>
+        </ul>
+    </div>
+</nav>
+</header>
+
+<div class="container">
+<main>
+
+<!-- HERO SECTION -->
+    <section class="firstSection" id="home">
+        <div class="leftSection">
+            <h1>Hi, I'm <span class="gold">Himadri Purohit</span> and I am</h1>
+            <span id="element"></span>
+            
+        </div>
+
+        <div class="rightSection">
+            <img src="my pic.jpeg" alt="">
+        </div>
+    </section>
+    <hr>
+
+<!-- ABOUT SECTION -->
+<section class="secondSection" id="about">
+
+<h1>About Me</h1>
+
+<div class="about-container">
+
+    <div class="about-image">
+        <img src="flower.png" alt="">
+    </div>
+
+    <div class="about-text">
+
+        <p>
+        I’m a high school student from Udaipur, India with a strong interest in computer science, simulation, and interactive systems. I enjoy building projects that combine logical problem-solving with creative design, particularly through game development and computational modeling.
+        </p>
+
+        <p>
+        Recently, I’ve been working with Unity and C# to build projects like a 3D solar system simulation and a 2D shooter game. Outside of programming, I’m involved in dance and theatre where I’ve taken on leadership roles. I’m excited to continue exploring computer science through projects, research, and new challenges.
+        </p>
+
+    </div>
+
+</div>
+
+</section>
+
+<hr>
+
+<!-- PROJECTS SECTION -->
+<section class="projectsSection" id="projects">
+
+<h1>Unity Projects</h1>
+
+<div class="projects-container">
+
+    <a href="https://prht-h.itch.io/solar-system" target="_blank" class="achievement-link">
+    <div class="project-card">
+        <img src="solar.jpg" alt="">
+        <h3>3D Solar System Simulation</h3>
+        <p>
+        A 3D simulation of the solar system built in Unity using C#. 
+        The project models planetary motion and interactive camera navigation.
+        </p>
+
+        <div class="project-links">
+            <a href="https://prht-h.itch.io/solar-system">Try it!</a>
+        </div>
+    </div></a>
+
+    <div class="project-card">
+        <img src="shooter-game.png" alt="">
+        <h3>2D Shooter Game</h3>
+        <p>
+        A work-in-progress 2D shooter built in Unity featuring player movement,
+        shooting mechanics, and enemy spawning systems.
+        </p>
+
+        <div class="project-links">
+            <a href="#"></a>
+        </div>
+    </div>
+
+</div>
+
+</section>
+
+<hr>
+
+<!-- SKILLS SECTION -->
+<section class="skillsSection" id="skills">
+
+<h1>Skills</h1>
+
+<div class="skills-container">
+
+<div class="skill-group">
+<h3>Programming</h3>
+<div class="skill-tags">
+<span>Python</span>
+<span>C#</span>
+<span>HTML</span>
+<span>CSS</span>
+<span>JavaScript</span>
+</div>
+</div>
+
+<div class="skill-group">
+<h3>Tools & Technologies</h3>
+<div class="skill-tags">
+<span>Unity</span>
+<span>Git</span>
+<span>GitHub</span>
+<span>VS Code</span>
+<span>AI Tools</span>
+</div>
+</div>
+
+<div class="skill-group">
+<h3>Concepts</h3>
+<div class="skill-tags">
+<span>Game Development</span>
+<span>Simulation</span>
+<span>Problem Solving</span>
+<span>Object-Oriented Programming</span>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<hr>
+
+<!-- EDUCATION SECTION -->
+<section class="educationSection" id="education">
+
+<h1>Education</h1>
+
+<div class="education-container">
+
+<div class="education-card">
+<h3>A-Levels (PCM CS)</h3>
+<p class="school">Rockwoods International School</p>
+<p class="location">Udaipur, India</p>
+<p class="years">2023 – 2025</p>
+
+<p class="details">
+Subjects: Mathematics, Physics, Chemistry, Computer Science, English Language
+</p>
+</div>
+
+<div class="education-card">
+<h3>CBSE Secondary Education</h3>
+<p class="school">MSS Public School Madanganj Kishangarh</p>
+<p class="location">Ajmer, India</p>
+<p class="years">Until 2023</p>
+
+<p class="details">
+Completed Class 10 under the CBSE curriculum with 93%.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<hr>
+
+<!-- ACHIEVEMENTS SECTION -->
+<section class="achievementsSection" id="achievements">
+
+<h1>Achievements</h1>
+
+<div class="achievements-container">
+
+<a href="https://www.instagram.com/rismun2025_/" target="_blank" class="achievement-link">
+<div class="achievement-card">
+<h3><i class="fa-solid fa-globe"></i> RISMUN 2025</h3>
+<p>Head of Outreach</p>
+</div>
+</a>
+
+<a href="https://www.linkedin.com/in/himadri-purohit-bba83b351/overlay/Project/285446184/treasury/?profileId=ACoAAFfd8_4B3CMhB1QimB1a89N682ZYjmEHJN0" target="_blank" class="achievement-link">
+<div class="achievement-card">
+<h3><i class="fa-solid fa-trophy"></i> Britannica Education India</h3>
+<p>National Finalist</p>
+</div>
+</a>
+
+<a href="https://www.linkedin.com/in/himadri-purohit-bba83b351/overlay/Honor/30871896/treasury/?profileId=ACoAAFfd8_4B3CMhB1QimB1a89N682ZYjmEHJN0" target="_blank" class="achievement-link">
+<div class="achievement-card">
+<h3><i class="fa-solid fa-medal"></i> TATA Building India</h3>
+<p>Bronze Medal</p>
+</div>
+</a>
+
+<a href="https://www.linkedin.com/in/himadri-purohit-bba83b351/overlay/Honor/726730452/treasury/?profileId=ACoAAFfd8_4B3CMhB1QimB1a89N682ZYjmEHJN0" target="_blank" class="achievement-link">
+<div class="achievement-card">
+<h3><i class="fa-solid fa-star"></i> Olympiads</h3>
+<p>Medals in multiple national-level Olympiads</p>
+</div>
+</a>
+
+<a href="https://www.linkedin.com/in/himadri-purohit-bba83b351/" target="_blank" class="achievement-link">
+<div class="achievement-card">
+<h3><i class="fa-solid fa-users"></i> Leadership</h3>
+<p>President of School's Dance & Theatre Club</p>
+</div>
+</a>
+
+
+</div>
+
+</section>
+
+<hr>
+
+<!-- CONTACT SECTION -->
+<section class="contactSection" id="contact">
+
+<h1>Contact</h1>
+
+<p class="contact-text">
+Feel free to reach out if you'd like to collaborate, discuss projects, or just say hello.
+</p>
+
+<div class="contact-links">
+
+<a href="mailto:prhthimadri@outlook.com">
+<i class="fa-solid fa-envelope"></i> Email
+</a>
+
+<a href="https://github.com/prht-h" target="_blank">
+<i class="fa-brands fa-github"></i> GitHub
+</a>
+
+<a href="https://www.linkedin.com/in/himadri-purohit-bba83b351/" target="_blank">
+<i class="fa-brands fa-linkedin"></i> LinkedIn
+</a>
+
+<a href="Resume_Himadri_Purohit.pdf" target="_blank">
+<i class="fa-solid fa-file"></i> Resume
+</a>
+
+</div>
+
+</section>
+
+</main>
+
+<!-- SCRIPTING -->
+<script>
+    var typed = new Typed('#element', {
+      strings: ['a high school student and', 'an aspiring Computer Scientist from Udaipur, India.'],
+      typeSpeed: 50,
+    });
+    const sections = document.querySelectorAll("section");
+
+    const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+    if(entry.isIntersecting){
+    entry.target.classList.add("show");
+    }
+    });
+    });
+
+    sections.forEach(section => {
+    observer.observe(section);
+    });
+</script>
+</div>
+
+</body>
+</html>
