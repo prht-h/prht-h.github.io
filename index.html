@@ -19,7 +19,7 @@
             background-color: rgb(231 216 201);
             color: rgb(47 62 78);
             font-family: "Inter", sans-serif;
-            padding-top:80px;
+            padding-top:90px;
 
         }
         .container{
@@ -466,25 +466,71 @@
             height:auto;
         }
 
+        .menu-toggle{
+            display:none;
+            font-size:22px;
+            cursor:pointer;
+            color:rgb(231 216 201);
+        }
+
 /*MEDIA QUERY*/
         @media (max-width: 768px) {
 
         /* NAVBAR */
 
         nav{
-            padding:15px 20px;
-            flex-direction:column;
-            align-items:flex-start;
-            height:auto;
+            padding:12px 18px;
         }
 
         nav ul{
             flex-wrap:wrap;
             margin-top:10px;
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: rgb(47 62 78);
+            flex-direction: column;
+            padding: 20px 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            border-top: 1px solid rgba(231,216,201,0.3);
+            gap: 10px;
+            transform: translateY(-10px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            margin: 0;
+            z-index: 999;
+        }
+
+        nav ul.show {
+            display: flex;
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
         }
 
         nav ul li{
             margin:8px 12px;
+            text-align: center;
+            padding: 12px 20px;
+            width: 100%;
+            border-bottom: 1px solid rgba(231,216,201,0.1);
+
+        }
+
+        nav ul li:last-child {
+            border-bottom: none;
+        }
+
+        nav ul li:hover {
+            background-color: rgba(230,166,93,0.2);
+        }
+
+
+        .menu-toggle{
+            display:block;
         }
 
         /* HERO SECTION */
@@ -572,6 +618,11 @@
 <!-- NAVIGATION BAR -->
 <nav>
     <div class="left">Himadri Purohit's Portfolio</div>
+
+    <div class="menu-toggle">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+
     <div class="right">
         <ul>
             <li><a href="#home">Home</a></li>
@@ -860,11 +911,18 @@ Feel free to reach out if you'd like to collaborate, discuss projects, or just s
 sections.forEach(section => {
   observer.observe(section);
 
-  // if already visible on load
   if (section.getBoundingClientRect().top < window.innerHeight) {
     section.classList.add("show");
   }
 });
+
+const menuToggle = document.querySelector(".menu-toggle");
+const navMenu = document.querySelector("nav ul");
+
+menuToggle.addEventListener("click", () => {
+    navMenu.classList.toggle("show");
+});
+
 </script>
 </div>
 
